@@ -8,6 +8,7 @@ import { CardComponent } from './components/card/card.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TrimPipe } from './pipes/trim.pipe';
 import { PipesComponent } from './components/demo/pipes/pipes.component';
+import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
 
 
 
@@ -17,13 +18,15 @@ import { PipesComponent } from './components/demo/pipes/pipes.component';
     NavbarComponent,
     CardComponent,
     FooterComponent,
-    PipesComponent
+    PipesComponent,
+
    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-         TrimPipe 
+         TrimPipe , 
+           ReactiveFormComponent 
 
   ],
   providers: [],
