@@ -1,23 +1,37 @@
 import { Component, Input } from '@angular/core';
-import { post } from '../../models/card.models';
+
 @Component({
   selector: 'app-card',
-  standalone: false,
   templateUrl: './card.component.html',
-  styleUrl: './card.component.css'
+  styleUrls: ['./card.component.css'],
+  standalone: false
 })
 export class CardComponent {
-  @Input() post: post = {
-  username: '',
-  profileImage: '',
-  postImage: '',
-  content: '',
-  time: ''
-};
+  @Input() post: any;
 
-liked :boolean = false;
-isliked(){
-  this.liked = !this.liked
-}
+  liked: boolean = false;
+  showCommentInput: boolean = false;
+  newComment: string = '';
+  comments: string[] = [];
 
+  isliked() {
+    this.liked = !this.liked;
+  }
+
+  toggleCommentInput() {
+    this.showCommentInput = !this.showCommentInput;
+  }
+
+  addComment() {
+    const trimmed = this.newComment.trim();
+    if (trimmed) {
+      this.comments.push(trimmed);
+      this.newComment = '';
+      this.showCommentInput = false;
+    }
+  }
+
+  deleteComment(index: number) {
+    this.comments.splice(index, 1);
+  }
 }

@@ -13,7 +13,22 @@
   </div>
 
   <div class="post-actions">
-    <button (click)="isliked()" [class.liked]="liked">{{liked?'❤️ Liked' : '🤍 Like'}}</button>
-    
+    <button (click)="isliked()" [class.liked]="liked">
+      {{ liked ? '❤️ Liked' : '🤍 Like' }}
+    </button>
+
+    <span class="icon" (click)="toggleCommentInput()">💬 Comment</span>
   </div>
+
+  <div *ngIf="showCommentInput" class="comment-box">
+    <input [(ngModel)]="newComment" placeholder="Write a comment..." />
+    <button (click)="addComment()">Post</button>
+  </div>
+
+  <ul>
+    <li *ngFor="let comment of comments; let i = index">
+      {{ comment }}
+      <button (click)="deleteComment(i)">❌</button>
+    </li>
+  </ul>
 </div>
